@@ -17,7 +17,7 @@ export default function Navbar() {
   console.log("Printing base url: ",process.env.REACT_APP_BASE_URL);
 
   const token = useSelector((state) => state.auth)
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state) => state.profile)
   const totalItem = useSelector((state) => state.cart)
   // console.log(token);
   // console.log(user);
@@ -28,8 +28,7 @@ export default function Navbar() {
   const fetchSubLinks = async () => {
     try {
       const result = await apiConnector('GET', categories.CATEGORIES_API)
-      console.log('fetch all cat result ', result);
-      console.log('fetch all cat result data ', result.data);
+      console.log('logging setsub data',result.data.data)
       setSublinks(result.data.data)
     } catch (error) {
       console.log('could not fetch categories');
@@ -62,21 +61,21 @@ export default function Navbar() {
                 {
                   link.title === 'Catalog' ?
                     (
-                      <div className='relative flex items-center gap-2 group'>
+                      <div className='relative flex items-center gap-2 group z-10'>
                         <p>{link.title}</p>
                         <IoIosArrowDropdownCircle />
-                        <div className=' invisible  opacity-0 absolute left-[50%] top-[50%] -translate-x-[50%] translate-y-[50%] flex flex-col rounded-md bg-richblack-5 text-richblack-900 p-4 transition-all duration-200 group-hover:visible group-hover:opacity-100 lg:w-[300px]'>
+                        <div className=' invisible  opacity-0 absolute left-[50%] top-[0%] -translate-x-[50%] translate-y-[35%] flex flex-col rounded-md bg-richblack-5 text-richblack-900 p-4 transition-all duration-200 group-hover:visible group-hover:opacity-100 lg:w-[300px]'>
                           <div className='absolute left-[50%] top-0 translate-x-[80%] -translate-y-[50%] rotate-45
                           rounded bg-richblack-5 h-6 w-6'>
                           </div>
                           {
-                            subLinks.length >0&&(
-                             ( subLinks?.map((sublink, index)=>{
-                              <Link to={sublink} key={index}>
-                                <p>{sublink}</p>
-                              </Link>
-                             }))
-                            )
+                            subLinks.length ? (
+                              subLinks.map((subLink, index) => (
+                                <Link to={`/${subLink.name}`} key={index}>
+                                  <p>{subLink.name}</p>
+                                </Link>
+                              ))
+                            ) : (<div></div>)
                           }
                         </div>
                       </div>
@@ -113,7 +112,7 @@ export default function Navbar() {
             )
           }
           {
-            token.token === 'undefined' && (
+            token.token === null && (
               <Link to="/login">
                 <button className='border border-richblack-700 bg-richblack-800 px-[12px] py-[6px] text-richblack-100 rounded-md'>
                   LogIn
@@ -122,7 +121,7 @@ export default function Navbar() {
             )
           }
           {
-            token.token === 'undefined' && (
+            token.token === null && (
               <Link to="/signup">
                 <button className='border border-richblack-700 bg-richblack-800 px-[12px] py-[6px] text-richblack-100 rounded-md'>
                   SignUp
@@ -131,7 +130,7 @@ export default function Navbar() {
             )
           }
           {
-            token.token !== 'undefined' && <ProfileDropDown />
+            token.token !== null && <ProfileDropDown />
           }
         </div>
       </div>
