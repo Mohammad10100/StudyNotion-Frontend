@@ -48,12 +48,12 @@ export default function Home() {
                         Book a Demo
                     </CTAButton>
                 </div>
-                <div className='mx-3 my-12 shadow-blue-200'>
+                <div className="mx-3 my-7 shadow-[10px_-5px_50px_-5px] shadow-blue-200">
                     <video
                         muted
                         loop
                         autoPlay
-                    >
+                        className="shadow-[20px_20px_rgba(255,255,255)]">
                         <source src={Banner} type="video/mp4" />
                     </video>
                 </div>
@@ -64,7 +64,7 @@ export default function Home() {
                         position={"lg:flex-row"}
                         heading={
                             <div className='text-4xl font-semibold'>
-                                Unlock Your
+                                Unlock Your 
                                 <HighlightText text={"coding potential"} />
                                 with our online courses
                             </div>
@@ -89,6 +89,8 @@ export default function Home() {
 
                         codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet"href="styles.css">\n/head>\n`}
                         codeColor={"text-yellow-25"}
+                        param={1}
+
                     />
                 </div>
 
@@ -98,9 +100,8 @@ export default function Home() {
                         position={"lg:flex-row-reverse"}
                         heading={
                             <div className='text-4xl font-semibold'>
-                                Unlock Your
-                                <HighlightText text={"coding potential"} />
-                                with our online courses
+                                Start
+                                <HighlightText text={"coding in seconds"} />
                             </div>
                         }
                         subheading={
@@ -123,6 +124,7 @@ export default function Home() {
 
                         codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet"href="styles.css">\n/head>\n`}
                         codeColor={"text-yellow-25"}
+                        param={2}
                     />
                 </div>
 
@@ -192,7 +194,7 @@ export default function Home() {
 
                 <InstructorSection />
 
-                <h2 className='text-center text-4xl font-semobold mt-10'>review from Other Learners</h2>
+                <h2 className='text-center text-4xl font-semibold mt-8'>Reviews from other learners</h2>
                 {/* Review Slider here */}
             </div>
 

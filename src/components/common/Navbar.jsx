@@ -71,7 +71,7 @@ export default function Navbar() {
                           {
                             subLinks.length ? (
                               subLinks.map((subLink, index) => (
-                                <Link to={`/${subLink.name}`} key={index}>
+                                <Link to={`/${subLink.name}`} key={index} className=' rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50'>
                                   <p>{subLink.name}</p>
                                 </Link>
                               ))

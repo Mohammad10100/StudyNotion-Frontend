@@ -1,15 +1,16 @@
+import '../../../App.css'
 import React from 'react'
 import CTAButton from "../Homepage/CTAButton"
 import {FaArrowRight} from "react-icons/fa"
 import { TypeAnimation } from 'react-type-animation'
 
-export default function CodeBlocks({ position, heading, subheading, ctabtn1, ctabtn2, codeblock, codeColor }) {
+export default function CodeBlocks({ position, heading, subheading, ctabtn1, ctabtn2, codeblock, codeColor, param }) {
   return (
     <>
-      <div className={`flex ${position} my-20 justify-between gap-10`}>
+      <div className={`flex lg:flex-row my-20 justify-between flex-col lg:gap-10 gap-10 ${position}`}>
 
         {/*Section 1*/}
-        <div className='w-[50%] flex flex-col gap-8'>
+        <div className='w-[100%] lg:w-[50%] flex flex-col gap-8'>
           {heading}
           <div className='text-richblack-300 font-bold '>
             {subheading}
@@ -32,8 +33,8 @@ export default function CodeBlocks({ position, heading, subheading, ctabtn1, cta
         </div>
 
         {/*Section 2*/}
-        <div className=' h-fit  flex flex-row text-10[px] w-[100%] py-4 lg:w-[500px]'>
-          {/*HW -> BG gradient*/}
+        <div className='h-fit code-border flex flex-row py-3 text-[10px] sm:text-sm leading-[18px] sm:leading-6 relative w-[100%] lg:w-[470px]'>
+        <div className={`codeblocks${param} absolute`}></div>
 
           <div className='text-center flex flex-col w-[10%] text-richblack-400 font-inter font-bold'>
             <p>1</p>
@@ -49,7 +50,7 @@ export default function CodeBlocks({ position, heading, subheading, ctabtn1, cta
             <p>11</p>
           </div>
 
-          <div className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-2`}>
+          <div className={`w-[90%] flex flex-col gap-2 font-bold font-mono text-yellow-25 pr-1 ${codeColor}`}>
             <TypeAnimation
               sequence={[codeblock, 2000, ""]}
               repeat={Infinity}

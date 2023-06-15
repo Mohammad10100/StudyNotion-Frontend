@@ -1,3 +1,4 @@
+import "./App.css";
 import React from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home.jsx'
@@ -20,9 +21,10 @@ import { useDispatch, useSelector } from "react-redux";
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 import Cart from "./components/core/Dashboard/Cart";
 import { ACCOUNT_TYPE } from "./utils/constants";
+import AddCourse from "./components/core/Dashboard/AddCourse";
 
 export default function App() {
-  
+
   const { user } = useSelector((state) => state.profile)
 
   return (
@@ -101,6 +103,15 @@ export default function App() {
                 <>
                   <Route path="dashboard/cart" element={<Cart />} />
                   <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+                </>
+              )
+            }
+
+            {
+              user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+                <>
+                  <Route path="dashboard/add-course" element={<AddCourse />} />
+
                 </>
               )
             }
