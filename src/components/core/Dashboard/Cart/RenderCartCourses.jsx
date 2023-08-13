@@ -9,20 +9,21 @@ const RenderCartCourses = () => {
 
     const {cart} = useSelector((state) => state.cart);
     const dispatch = useDispatch();
-
-
-  return (
-    <div>
+    
+    
+    return (
+        <div>
     {
         cart.map((course, index) => (
-            <div>
-                <div>
-                    <img alt='course thumnail' src={course?.thumbnail} />
-                    <div>
-                        <p>{course?.courseName}</p>
-                        <p>{course?.category?.name}</p>
-                        <div>
-                            <span>4.8</span>
+
+                    <div className='flex flex-1 flex-col gap-4 xl:flex-row'>
+                    <img className='h-[148px] w-[220px] rounded-lg object-cover' alt='course thumnail' src={course?.thumbnail} />
+                    
+                    <div className='flex flex-col space-y-1'>
+                        <p className='text-lg font-medium text-richblack-5'>{course?.courseName}</p>
+                        <p className='text-sm text-richblack-300'>{course?.category?.name}</p>
+                        <div className='flex items-center gap-2'>
+                            <span className='text-yellow-5'>4.8</span>
                             <ReactStars
                                 count={5}
                                 size={20}
@@ -32,21 +33,21 @@ const RenderCartCourses = () => {
                                 fullIcon={<GiNinjaStar />}
                             /> 
 
-                            <span>{course?.ratingAndReviews?.length} Ratings</span>
+                            <span className='text-richblack-400'>{course?.ratingAndReviews?.length} Ratings</span>
 
                         </div>
-                    </div>
+
                 </div>
 
-                <div>
-                    <button
+                <div className='flex flex-col items-end space-y-2'>
+                    <button className='flex items-center gap-x-1 rounded-md border border-richblack-600 bg-richblack-700 py-3 px-[12px] text-pink-200'
                     onClick={() => dispatch(removeFromCart(course._id))}
                     >
                         <RiDeleteBin6Line/>
-                        <span>Remove</span>
+                        <span >Remove</span>
                     </button>
 
-                    <p>Rs {course?.price} </p>
+                    <p className='mb-6 text-3xl font-medium text-yellow-100'>Rs {course?.price} </p>
                 </div>
             </div>
         ))

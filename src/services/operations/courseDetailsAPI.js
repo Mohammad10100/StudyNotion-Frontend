@@ -89,7 +89,7 @@ export const addCourseDetails = async (data, token) => {
   try {
     const response = await apiConnector("POST", CREATE_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
-      Authorisation: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     })
     console.log("CREATE COURSE API RESPONSE............", response)
     if (!response?.data?.success) {
@@ -110,17 +110,22 @@ export const editCourseDetails = async (data, token) => {
   let result = null
   const toastId = toast.loading("Loading...")
   try {
+    console.log('start1');
     const response = await apiConnector("POST", EDIT_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
-      Authorisation: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     })
+    console.log('start2');
     console.log("EDIT COURSE API RESPONSE............", response)
     if (!response?.data?.success) {
       throw new Error("Could Not Update Course Details")
     }
+    console.log('start3');
     toast.success("Course Details Updated Successfully")
     result = response?.data?.data
+    console.log('start4');
   } catch (error) {
+    console.log('start5');
     console.log("EDIT COURSE API ERROR............", error)
     toast.error(error.message)
   }
@@ -374,6 +379,7 @@ export const createRating = async (data, token) => {
     })
     console.log("CREATE RATING API RESPONSE............", response)
     if (!response?.data?.success) {
+      toast.error('Already reviewed')
       throw new Error("Could Not Create Rating")
     }
     toast.success("Rating Created")

@@ -59,14 +59,11 @@ export function updateProfile(token, formData) {
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
-      const userImage = response.data.image
-      ? response.data.image
-      : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`
+      const userImage = response.data.image? (response.data.image) : (`https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`)
       console.log('set user');
-      console.log(userImage);
       dispatch(
         setUser({ ...response.data.updatedUserDetails, image: userImage })
-        )
+      )
       toast.success("Profile Updated Successfully")
     } catch (error) {
       console.log("UPDATE_PROFILE_API API ERROR............", error)

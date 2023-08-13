@@ -10,13 +10,14 @@ import TimelineSection from '../components/core/Homepage/TimelineSection'
 import LearningLanguageSection from '../components/core/Homepage/LeaningLanguageSection'
 import InstructorSection from '../components/core/Homepage/InstructorSection'
 import Footer from '../components/common/Footer'
+import ReviewSlider from "../components/common/ReviewSlider"
+import ExploreMore from "../components/core/Homepage/ExploreMore"
 
 export default function Home() {
     return (
         <div>
             {/*Section1  */}
-            <div className='relative mx-auto flex flex-col w-11/12 max-w-maxContent items-center 
-      text-white justify-between'>
+            <div className='relative mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 text-white'>
 
                 <Link to={"/signup"}>
                     <div className=' group mt-16 p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200
@@ -128,6 +129,7 @@ export default function Home() {
                     />
                 </div>
 
+            <ExploreMore />
             </div>
 
             {/*Section 2  */}
@@ -195,7 +197,7 @@ export default function Home() {
                 <InstructorSection />
 
                 <h2 className='text-center text-4xl font-semibold mt-8'>Reviews from other learners</h2>
-                {/* Review Slider here */}
+                <ReviewSlider />
             </div>
 
 
