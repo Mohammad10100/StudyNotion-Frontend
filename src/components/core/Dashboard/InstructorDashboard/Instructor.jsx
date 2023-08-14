@@ -97,7 +97,6 @@ export default function Instructor() {
               </div>
               <div className="my-4 flex items-start space-x-6">
                 {courses.slice(0, 3).map((course) => (
-                  console.log(course, 'instructor dash'),
                   <div key={course._id} className="w-1/3">
                     <img
                       src={course.thumbnail}

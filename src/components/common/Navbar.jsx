@@ -68,7 +68,7 @@ export default function Navbar() {
                           rounded bg-richblack-5 h-6 w-6'>
                           </div>
                           {
-                            subLinks.length ? (
+                            subLinks?.length ? (
                               subLinks.map((subLink, index) => (
                                 <Link to={`/catalog/${subLink.name
                                   .split(" ")
