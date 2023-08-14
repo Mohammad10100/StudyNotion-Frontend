@@ -46,12 +46,12 @@ function CourseDetailsCard({course, setConfirmationModal, handleBuyCourse}) {
     }
 
     return (
-        <div className='right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block'>
+        <div className='right-[1rem] top-[60px] mx-auto sm:block md:block sm:w-full min-h-[600px] max-w-[410px] translate-y-24 sm:translate-y-0 md:translate-y-0 lg:absolute  lg:block'>
         <div className='flex flex-col gap-4 rounded-md bg-richblack-700 p-4 text-richblack-5'>
             <img 
                 src={ThumbnailImage}
                 alt='Thumbnail Image'
-                className='max-h-[300px] min-h-[180px] w-[400px] overflow-hidden rounded-2xl object-cover md:max-w-full'
+                className='max-h-[300px]  min-h-[180px] w-[400px] overflow-hidden rounded-2xl object-cover md:max-w-full'
             />
             <div className=' px-4'>
                 <div className='space-x-3 pb-4 text-3xl font-semibold'>
